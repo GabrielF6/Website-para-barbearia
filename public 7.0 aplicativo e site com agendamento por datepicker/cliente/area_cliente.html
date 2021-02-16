@@ -1,0 +1,1044 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet">
+
+    <link rel="stylesheet" href="../css/open-iconic-bootstrap.min.css">
+    <link rel="stylesheet" href="../css/animate.css">
+
+    <link rel="stylesheet" href="../css/owl.carousel.min.css">
+    <link rel="stylesheet" href="../css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="../css/magnific-popup.css">
+
+    <link rel="stylesheet" href="../css/aos.css">
+
+    <link rel="stylesheet" href="../css/ionicons.min.css">
+
+    <link rel="stylesheet" href="../css/bootstrap-datepicker.css">
+    <link rel="stylesheet" href="../css/jquery.timepicker.css">
+
+    <link rel="stylesheet" href="../css/flaticon.css">
+    <link rel="stylesheet" href="../css/icomoon.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <title>Book an appointment</title>
+    <script src="https://www.gstatic.com/firebasejs/7.21.1/firebase.js"></script>
+    
+   
+
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
+        <div class="container">
+            <a class="navbar-brand">Rustic Cut: Client area</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="oi oi-menu"></span> Menu
+            </button>
+
+            <div class="collapse navbar-collapse" id="ftco-nav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item"><a href="../index.html" class="nav-link">Home</a></li>
+                    <li class="nav-item"><a href="../sobre.html" class="nav-link">About</a></li>
+
+                    <li class="nav-item"><a href="galeriaCliente.html" class="nav-link">Gallery</a></li>
+                    <button class="btn btn-primary px-4 py-3" id="lo" type="button">Exit<i class="icon-logout icon"></i></button>
+                    <script>
+                        //logout
+                        lo.addEventListener('click', e => {
+                            firebase.auth().signOut();
+                            window.location.href = "../index.html";
+
+                        });
+                        // Mostrar
+                    </script>
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="box-centerside"  align="center" class="inline" style="margin-top: 200px; height: 100%;" data-stellar-background-ratio="0.5">
+
+
+        <h1 class="mb-5" id="clientName" style="font-family: Lobster" align="center" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">Welcome </h3>
+
+        <h3 class="mb-5" align="center" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">Book an appointment below</h1>
+
+
+
+            
+         <div class="col-md-7 heading-section ftco-animate text-center" align="center">
+                    <h2 class="mb-4">1- Chose the day</h2>
+                    <p class="flip"><span class="deg1"></span><span class="deg2"></span><span class="deg3"></span></p>
+
+         </div>
+
+                
+         
+
+        <table  align="center" class="mb-5" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">
+            <tr>
+                <td>
+                    
+                    <div class="input-group date" data-provide="datepicker">
+                        <input type="text" class="form-control" style="text-align: center;" id="datepicking" placeholder="click here to chose a date" readonly="readonly">
+                        <div class="input-group-addon">
+                            <span class="glyphicon glyphicon-th"></span>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+     
+            <tr>
+                <label for="name" class="" id="aviso" style=" align= center "></label>
+            </tr>
+        </table>
+
+
+        <style type="text/css">
+        #h1, #h2, #h3, #h4, #h5, #h6, #h7, #h8, #h9, #h10, #h11, #h12, #h13, #h14, #h15, #h16, #h17, #h18 {
+        display: none;
+        }
+        </style>
+        <style type="text/css">
+        #b1, #b2, #b3, #b4, #b5, #b6, #b7, #b8, #b9, #b10 {
+        display: none;
+        }
+        </style>
+        <style type="text/css">
+        #s1, #s2, #s3, #s4, #s5, #s6, #s7, #s8, #s9, #s10 {
+        display: none;
+        }
+        </style>
+
+         <div class="col-md-7 heading-section ftco-animate text-center" align="center">
+                    <h2 class="mb-4">2- Chose a Barber</h2>
+                    <p class="flip"><span class="deg1"></span><span class="deg2"></span><span class="deg3"></span></p>
+
+                </div>
+
+
+        <table  align="center" style="margin-top: 40px"  class="mb-5" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">
+
+            <tr>
+                <td>
+                <button id="b1" onclick="escbarb(1)" class="btn btn-primary btn-block" style="background-color: #B5462E; margin-top: 10px;" align="center"></button>
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                <button id="b2"  onclick="escbarb(2)"class="btn btn-primary btn-block" style="background-color: #B5462E; margin-top: 10px;" align="center"></button>
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                <button id="b3"  onclick="escbarb(3)"class="btn btn-primary btn-block" style="background-color: #B5462E; margin-top: 10px;" align="center"></button>
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                <button id="b4"  onclick="escbarb(4)"class="btn btn-primary btn-block" style="background-color: #B5462E; margin-top: 10px;" align="center"></button>
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                <button id="b5"  onclick="escbarb(5)"class="btn btn-primary btn-block" style="background-color: #B5462E; margin-top: 10px;" align="center"></button>
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                <button id="b6"  onclick="escbarb(6)"class="btn btn-primary btn-block" style="background-color: #B5462E; margin-top: 10px;" align="center"></button>
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                <button id="b7"  onclick="escbarb(7)"class="btn btn-primary btn-block" style="background-color: #B5462E; margin-top: 10px;" align="center"></button>
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                <button id="b8"  onclick="escbarb(8)"class="btn btn-primary btn-block" style="background-color: #B5462E; margin-top: 10px;" align="center"></button>
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                <button id="b9"  onclick="escbarb(9)"class="btn btn-primary btn-block" style="background-color: #B5462E; margin-top: 10px;" align="center"></button>
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                <button id="b10" onclick="escbarb(10)" class="btn btn-primary btn-block" style="background-color: #B5462E; margitop: 10px;" align="center"></button>
+                </td>
+            </tr>
+
+        </table>
+
+
+         <div class="col-md-7 heading-section ftco-animate text-center" align="center" style="margin-bottom: 30px">
+                    <h2 class="mb-4">3- Chose a time</h2>
+                    <p class="flip"><span class="deg1"></span><span class="deg2"></span><span class="deg3"></span></p>
+
+                </div>
+
+        <div style="display:inline-block; align= center " >
+            <button class="btn btn-primary btn-block" id="h1" style="   width:100px;"  align="center" type="button">8:00</button>
+        </div>
+
+        <div style="display:inline-block;">
+            <button class="btn btn-primary btn-block" id="h2" style="   width:100px;" align="center" type="button">8:30</button>
+        </div>
+
+        <div style="display:inline-block;">
+            <button class="btn btn-primary btn-block" id="h3" style="  width:100px;" align="center" type="button">9:00</button>
+        </div>
+
+        <div style="margin-top: 10px">
+            
+        </div>
+
+        <div style="display:inline-block;">
+            <button class="btn btn-primary btn-block" id="h4" style="  width:100px;" align="center" type="button">9:30</button>
+        </div>
+
+        <div style="display:inline-block;">
+            <button class="btn btn-primary btn-block" id="h5" style="  width:100px;" align="center" type="button">10:00</button>
+        </div>
+        
+
+        <div style="display:inline-block;">
+            <button class="btn btn-primary btn-block" id="h6" style="  width:100px;" align="center" type="button">10:30</button>
+        </div>
+
+        <div style="margin-top: 10px">
+            
+        </div>
+
+        <div style="display:inline-block;">
+            <button class="btn btn-primary btn-block" id="h7" style="  width:100px;" align="center" type="button">11:00</button>
+        </div>
+
+        <div style="display:inline-block;">
+            <button class="btn btn-primary btn-block" id="h8" style="  width:100px;" align="center" type="button">11:30</button>
+        </div>
+
+        <div style="display:inline-block;">
+            <button class="btn btn-primary btn-block" id="h9" style="  width:100px;" align="center" type="button">12:00</button>
+            
+        </div>
+
+        <div style="margin-top: 10px">
+            
+        </div>
+        
+        <div style="display:inline-block;">
+            <button class="btn btn-primary btn-block" id="h10" style="  width:100px;" align="center" type="button">12:30</button>
+
+        </div >        
+
+        <div style="display:inline-block;">
+            <button class="btn btn-primary btn-block" id="h11" style="  width:100px;" align="center" type="button">13:00</button>
+        </div>
+
+        <div style="display:inline-block;">
+            <button class="btn btn-primary btn-block" id="h12" style="  width:100px;" align="center" type="button">13:30</button>
+        </div>
+
+        <div style="margin-top: 10px">
+            
+        </div>
+
+        <div style="display:inline-block;">
+            <button class="btn btn-primary btn-block" id="h13" style="  width:100px;" align="center" type="button">14:00</button>
+        </div>
+
+        <div style="display:inline-block;">
+            <button class="btn btn-primary btn-block" id="h14" style="  width:100px;" align="center" type="button">14:30</button>
+        </div>
+
+        <div style="display:inline-block;">
+            <button class="btn btn-primary btn-block" id="h15" style="  width:100px;" align="center" type="button">15:00</button>
+        </div  >
+
+        <div style="margin-top: 10px">
+            
+        </div>
+
+        <div style="display:inline-block;">
+            <button class="btn btn-primary btn-block" id="h16" style="  width:100px;" align="center" type="button">15:30</button>
+        </div>
+
+        <div style="display:inline-block;">
+            <button class="btn btn-primary btn-block" id="h17" style="  width:100px;" align="center" type="button">16:00</button>
+        </div>
+
+        <div style="display:inline-block;">
+            <button class="btn btn-primary btn-block" id="h18" style="  width:100px;" align="center" type="button">16:30</button>
+        </div>
+
+        <div  style="margin-top: 40px">
+            
+        </div>
+
+         <div class="col-md-7 heading-section ftco-animate text-center" align="center" style="margin-bottom: 40px">
+                    <h2 class="mb-4">4- Chose a service</h2>
+                    <p class="flip"><span class="deg1"></span><span class="deg2"></span><span class="deg3"></span></p>
+
+                </div>
+
+        <div style="display:inline-block;">
+            <button class="btn btn-primary btn-block" id="s1" onclick="escService(1)" style="  width:200px; margin: 1%" align="center" type="button"></button>
+        </div>
+
+        <div style="display:inline-block;">
+            <button class="btn btn-primary btn-block" id="s2"  onclick="escService(2)"  style="  width:200px; margin: 1%" align="center" type="button"></button>
+        </div>
+        
+
+        <div style="display:inline-block;">
+            <button class="btn btn-primary btn-block" id="s3" onclick="escService(3)"  style="  width:200px; margin: 1%" align="center" type="button"></button>
+        </div>
+
+        <div style="display:inline-block;">
+            <button class="btn btn-primary btn-block" id="s4" onclick="escService(4)"  style="  width:200px; margin: 1%" align="center" type="button"></button>
+        </div>
+
+        <div style="display:inline-block;">
+            <button class="btn btn-primary btn-block" id="s5" onclick="escService(5)"  style="  width:200px; margin: 1%" align="center" type="button"></button>
+        </div>
+
+        <div style="display:inline-block;">
+            <button class="btn btn-primary btn-block" id="s6" onclick="escService(6)"  style="  width:200px; margin: 1%" align="center" type="button"></button>
+        </div>
+
+        <div style="display:inline-block;">
+            <button class="btn btn-primary btn-block" id="s7" onclick="escService(7)"  style="  width:200px; margin: 1%" align="center" type="button"></button>
+        </div>
+
+        <div style="display:inline-block;">
+            <button class="btn btn-primary btn-block" id="s8" onclick="escService(8)"  style="  width:200px; margin: 1%" align="center" type="button"></button>
+        </div>
+
+        <div style="display:inline-block;">
+            <button class="btn btn-primary btn-block" id="s9" onclick="escService(9)"  style="  width:200px; margin: 1%" align="center" type="button"></button>
+        </div>
+
+        <div style="display:inline-block;">
+            <button class="btn btn-primary btn-block" id="s10" onclick="escService(10)"  style="  width:200px; margin: 1%" align="center" type="button"></button>
+        </div>
+
+        <div style="margin: 5%;">
+            <button class="btn btn-primary btn-block" id="confirmarAgendamento" style="  width:130px; font-size: 30px; background-color: orange  " align="center" type="button">DONE</button>
+            <label for="name" class="" id="avisoC" style=" align= center "></label>
+        </div>
+
+    </div>
+    <label for="name" class="" id="loading" style="" ></label>
+
+    </div>
+
+   
+
+    <footer class="page-footer dark" style="background-color: #4E4E4E" >
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-3" style="margin: 3%">
+                    <h5>Contact us </h5>
+                    <ul>
+                        <li><a >(XXX) xxx xxxx</a></li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.10.0/baguetteBox.min.js"></script>
+    <script src="../js/jquery.min.js"></script>
+    <script src="../js/jquery.min.js"></script>
+    <script src="../js/jquery-migrate-3.0.1.min.js"></script>
+    <script src="../js/popper.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+    <script src="../js/jquery.easing.1.3.js"></script>
+    <script src="../js/jquery.waypoints.min.js"></script>
+    <script src="../js/jquery.stellar.min.js"></script>
+    <script src="../js/owl.carousel.min.js"></script>
+    <script src="../js/jquery.magnific-popup.min.js"></script>
+    <script src="../js/aos.js"></script>
+    <script src="../js/jquery.animateNumber.min.js"></script>
+    <script src="../js/bootstrap-datepicker.js"></script>
+    <script src="../js/jquery.timepicker.min.js"></script>
+    <script src="../js/scrollax.min.js"></script>
+
+    <script src="../js/main.js"></script>
+
+    
+
+    <script type="text/javascript" >
+
+       
+
+
+
+
+
+        $(document).ready(function() {
+            $('#appt').timepicker({
+
+                timeFormat: 'h:mm p',
+                interval: 30
+            });
+
+        });
+
+       
+
+        var config = {
+            apiKey: "AIzaSyCjzgnkXen69TGkVWKQZmCELnR-eQHjRe0",
+            authDomain: "rusticcutbarber.firebaseapp.com",
+            databaseURL: "https://rusticcutbarber.firebaseio.com",
+            projectId: "rusticcutbarber",
+            storageBucket: "rusticcutbarber.appspot.com",
+            messagingSenderId: "412308247289"
+        };
+        firebase.initializeApp(config);
+
+        window.onunload = function () { // desloga ao fechar browser
+        firebase.auth().signOut();
+        
+        }
+
+        var storage = firebase.storage();
+
+        var nomeU=null;
+
+        firebase.auth().onAuthStateChanged(function(user) {
+            if (user) {
+                console.log('ja logado');
+                console.log(user.displayName);
+                console.log(user)
+                nomeU = user.displayName;
+                document.getElementById('clientName').innerHTML += nomeU.split("||")[0];
+                console.log('Display name:'+user.displayName);
+            } else {
+                //se nao tiver logado é direcionado para a pagina principal.
+                document.location.href = '../index.html';
+            }
+        });
+
+        var escd = null; //usada para escolha do dia
+        var escb = null; //usada para escolha do barbeiro
+        var esch = null; //usada para a escolha do horario.
+        var escs = null; //usada para escolha de servico
+        var ctrl = null; //usada para saber o que fazer quando clicar no botao confirma
+        var horarioS =null;//usado para saber se algum dia foi selecionado
+        var data = new Date(); //pega a data
+        var dia = data.getDate(); //pega o dia da semana
+        var agenda = null; //guarda toda a agenda do dia
+
+        var today = new Date();
+        var dd = String(today.getDate()).padStart(2, '0');
+        var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+        var yyyy = today.getFullYear();
+
+        today = mm + '/' + dd + '/' + yyyy;
+
+        
+        
+
+        console.log('today date: '+ dia);
+
+
+        var primeiroDodia = true;
+
+
+        //carregar os barbeiros
+
+
+       var numdef2 = null;
+
+        var numB2 = null;
+        var storageRef = storage.ref();
+        storageRef.child('barbers/info').getDownloadURL().then(function(url) {
+            var XMLHttp = new XMLHttpRequest();
+            XMLHttp.onreadystatechange = function() {
+                if (XMLHttp.readyState == 4 && XMLHttp.status == 200)
+                    numB2 = XMLHttp.responseText; // should have your text
+                console.log(numB2);
+                if (numB2 != null) {
+                    numdef2 = numB2;
+
+                    //puxa as fotos e nomes dos barbeiros
+                    //////ADICIONAR Fotos e nomes                ********************************
+
+                    var i = 0;
+                    var x = 1;
+                    pegab();
+
+                    function pegab() {
+                        if (i == numB2) return 0;
+                        var ctl = 1;
+                        console.log(i);
+                        var nome = null;
+                        var storage = firebase.storage();
+                        var storageRef = storage.ref();
+                        storageRef.child('barbers/barber' + i).getDownloadURL().then(function(url) {
+                            var XMLHttp = new XMLHttpRequest();
+                            XMLHttp.onreadystatechange = function() {
+                                if (XMLHttp.readyState == 4 && XMLHttp.status == 200){
+                                    nome = XMLHttp.responseText; // should have your text
+                                
+                                console.log(nome)
+                                
+                                        if (ctl == 1) {
+                                            
+                                            ctl = -1;
+                                            document.getElementById('b'+(i+1)).innerHTML = nome;
+                                            
+
+
+                                            
+
+                                            i++;
+                                            pegab();
+
+                                        }
+                                    }
+
+                            }
+                            XMLHttp.open("GET", url, true); // true for asynchronous 
+
+                            XMLHttp.send(null);
+                        }).catch(function(error) {
+                            //tratar os erros aqui
+                        });
+
+                    }
+
+                    //////FIM ADICIONAR STAKEHOLDERS                  ************************************
+
+                }
+
+            }
+            XMLHttp.open("GET", url, true); // true for asynchronous 
+
+            XMLHttp.send(null);
+        }).catch(function(error) {
+            //tratar os erros aqui
+        });
+
+
+
+
+        // inicio buscar servicos
+
+        var idserv = 1;
+
+        var storageRefTest = storage.ref('services').listAll().then(function(result) {
+                              result.items.forEach(function(service) {
+                                var aux = service.toString().split("/");
+                                var size = aux.length
+
+
+                                 service.getDownloadURL().then(function(url) {
+
+                                var XMLHttp = new XMLHttpRequest();
+                                XMLHttp.onreadystatechange = function() {
+                                    
+                                    if (XMLHttp.readyState == 4 && XMLHttp.status == 200){
+                                        var resul = XMLHttp.responseText; // pegou a agenda
+                                        console.log('resul:'+resul);
+                                    
+                                        document.getElementById('s'+(idserv)).innerHTML = aux[size-1] + '  ' +resul ;
+                                        document.getElementById('s'+(idserv)).style.display = 'initial';
+                                        idserv++;                
+                                        }
+                                    }
+                                    XMLHttp.open("GET", url, true); // true for asynchronous 
+
+                                    XMLHttp.send(null);
+                                        
+                                      }).catch(function(error) {
+                                        // Handle any errors
+                                      });
+                            
+                          });
+                        }).catch(function(error) {
+                          // Handle any errors
+                        });
+
+
+        // fim buscar servico
+
+
+        function mostrarAgenda() {
+
+            escd = escd.toString().split("/").join("_");
+            var diaesc = escd;
+            console.log('escd: '+ escd);
+
+            if (false) {
+                
+                
+
+            } else { //se o dia nao for invalido ou seja for do dia atual até sabado
+                console.log(dia);
+
+                //////// COMEÇO pegar agenda do dia escolhido
+
+                var hora = 1 ; //usado para pegar todos os arquivos de horario 18 horarios
+
+                
+                
+                loop();
+                function loop() {
+                    console.log('hora: '+ hora);
+                if(hora == 19) {
+                    document.getElementById('loading').innerHTML = '';
+                    return 0;
+                }
+                
+                    
+                var storageRef = storage.ref('booking/barber'+escb+'/' + escd+'/time'+hora).getDownloadURL().then(function(url) {
+                    var XMLHttp = new XMLHttpRequest();
+                    XMLHttp.onreadystatechange = function() {
+                        
+                        if (XMLHttp.readyState == 4 && XMLHttp.status == 200){
+                            agenda = XMLHttp.responseText; // pegou a agenda
+                        
+                        console.log("hora: "+ hora);
+
+                        if(diaesc != escd) return 0; // se a pessoa escolher outro dia paro de mostrar os horarios do dia atual
+
+                        if (agenda == "") {
+                            
+                            console.log('hora de setar');
+                            ctrl=2;
+                            
+                                    
+                                    document.getElementById("h"+hora).style.display = 'initial';
+                                }
+
+                        else{//reativar horarios caso ele tenha sido tirado antes
+                                    document.getElementById("h"+hora).style.display = 'none';   
+                            }
+                            
+                                
+                            }
+                        }
+
+                    
+                    XMLHttp.open("GET", url, false); // true for asynchronous 
+
+                    XMLHttp.send(null);
+
+                    if (XMLHttp.status == 404){
+
+                            loop();
+                        }
+
+                    if(url != null){
+                        hora++;
+                        loop();
+                    }
+                }).catch(function(error) {
+                    console.log('yes');
+                    if(hora == 1 && primeiroDodia) { alert('You are the first one to book on this day, select the time you want. \nPlease wait a few seconds while we load the available times below.');
+                        primeiroDodia = false;
+                }
+                    
+                    
+                    
+                    for (hora = 1; hora <19; hora++) {
+                        
+                        
+                        
+                        var storageRef4 = firebase.storage().ref('booking/barber'+escb+'/' + escd+'/time'+hora).putString('').then(function(snapshot) {
+                        if (snapshot.bytesTransferred / snapshot.totalBytes) //agora com o upload ja feito mandamos o link para a pessoa que tem o 
+                        {
+                                console.log('mais uma');
+                                
+                        }
+
+                        });
+
+                    }
+                    mostrarAgenda();
+                    
+
+                    //tratar os erros aqui
+                });
+
+               } // fim do loop para pegar todos os horarios
+
+                //fim de mostrar a agenda do dia selecionado
+            }
+
+        }
+
+        function mostrarB(){
+
+            setTimeout(function(){alert('wait briefly while the barbers are loaded')},20);
+
+
+            setTimeout(function(){
+            console.log('numdef2:'+numdef2);
+            for(var i = 0; i<numdef2; i++){
+                document.getElementById('b'+(i+1)).style.display= 'initial';
+            }
+        },3000);
+        }
+
+        //função que trata o click no botao escolher o dia
+       
+        datepicking.addEventListener('click',e => {
+            
+            $('#datepicking').datepicker({
+            
+            startDate: today
+        });
+        
+            
+            mostrarB();
+            limparDias();
+            //escd = 2;
+            
+            
+            e.stopPropagation();
+
+        });
+        
+        function escbarb(valor){
+             escd = $('#datepicking').val(); // pega o dia escolhido
+            console.log('escd: '+ escd);
+            if(escd === undefined){
+                alert("chose a day so the system can show the available times");
+            }
+            else
+            {
+
+                document.getElementById('loading').innerHTML += '<div id="ftco-loader" class="show"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee" /><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#6b9fce" /></svg></div>';
+
+                alert('loading available times for this barber, please select one time below');
+            
+                
+                escb = valor; //seta o valor do barbeiro
+
+                limparDias();
+
+                mostrarAgenda();
+            }
+        }
+
+
+        function escService(valor){
+         
+            
+            escs = valor; //seta o valor do barbeiro
+
+            var serviceText = document.getElementById('s'+valor).textContent;
+            alert('You selected: '+ serviceText);
+
+
+            mostrarAgenda();
+        }
+
+        
+       
+
+        //função que trata o click no botao escolher o horario
+        h1.addEventListener('click', e => {
+            esch = 1;
+            horarioS=1;
+            alert("8:00 am selected \n warnings:\n 1- after clicking \"Done\" you cannot unbook the appointment \n 2-if you get 30 minutes late your appointment can be canceled");
+            
+            e.stopPropagation();
+        });
+        h2.addEventListener('click', e => {
+            esch = 2;
+            horarioS=1;
+            alert("8:30 am selected \n warnings:\n 1- after clicking \"Done\" you cannot unbook the appointment \n 2-if you get 30 minutes late your appointment can be canceled");
+            
+            e.stopPropagation();
+        });
+        h3.addEventListener('click', e => {
+            esch = 3;
+            horarioS=1;
+            alert("9:00 am selected \n warnings:\n 1- after clicking \"Done\" you cannot unbook the appointment \n 2-if you get 30 minutes late your appointment can be canceled");
+
+            e.stopPropagation();
+        });
+        h4.addEventListener('click', e => {
+            esch = 4;
+            horarioS=1;
+            alert("9:30 am selected \n warnings:\n 1- after clicking \"Done\" you cannot unbook the appointment \n 2-if you get 30 minutes late your appointment can be canceled");
+            
+            e.stopPropagation();
+        });
+        h5.addEventListener('click', e => {
+            esch = 5;
+            horarioS=1;
+            alert("10:00 am selected \n warnings:\n 1- after clicking \"Done\" you cannot unbook the appointment \n 2-if you get 30 minutes late your appointment can be canceled");
+            e.stopPropagation();
+        });
+        h6.addEventListener('click', e => {
+            esch = 6;
+            horarioS=1;
+            alert("10:30 am selected \n warnings:\n 1- after clicking \"Done\" you cannot unbook the appointment \n 2-if you get 30 minutes late your appointment can be canceled");
+            e.stopPropagation();
+        });
+        h7.addEventListener('click', e => {
+            esch = 7;
+            horarioS=1;
+            alert("11:00 am selected \n warnings:\n 1- after clicking \"Done\" you cannot unbook the appointment \n 2-if you get 30 minutes late your appointment can be canceled");
+            e.stopPropagation();
+        });
+        h8.addEventListener('click', e => {
+            esch = 8;
+            horarioS=1;
+            alert("11:30 am selected \n warnings:\n 1- after clicking \"Done\" you cannot unbook the appointment \n 2-if you get 30 minutes late your appointment can be canceled");
+            e.stopPropagation();
+        });
+        h9.addEventListener('click', e => {
+            esch = 9;
+            horarioS=1;
+            alert("12:00  selected \n warnings:\n 1- after clicking \"Done\" you cannot unbook the appointment \n 2-if you get 30 minutes late your appointment can be canceled");
+            e.stopPropagation();
+        });
+        h10.addEventListener('click', e => {
+            esch = 10;
+            horarioS=1;
+            alert("12:30 pm selected \n warnings:\n 1- after clicking \"Done\" you cannot unbook the appointment \n 2-if you get 30 minutes late your appointment can be canceled");
+            e.stopPropagation();
+        });
+        h11.addEventListener('click', e => {
+            esch = 11;
+            horarioS=1;
+            alert("13:00 pm selected \n warnings:\n 1- after clicking \"Done\" you cannot unbook the appointment \n 2-if you get 30 minutes late your appointment can be canceled");
+            e.stopPropagation();
+        });
+        h12.addEventListener('click', e => {
+            esch = 12;
+            horarioS=1;
+            alert("13:30 pm selected \n warnings:\n 1- after clicking \"Done\" you cannot unbook the appointment \n 2-if you get 30 minutes late your appointment can be canceled");
+            e.stopPropagation();
+        });
+        h13.addEventListener('click', e => {
+            esch = 13;
+            horarioS=1;
+            alert("14:00 pm selected \n warnings:\n 1- after clicking \"Done\" you cannot unbook the appointment \n 2-if you get 30 minutes late your appointment can be canceled");
+            e.stopPropagation();
+        });
+        h14.addEventListener('click', e => {
+            esch = 14;
+            horarioS=1;
+            alert("14:30 pm selected \n warnings:\n 1- after clicking \"Done\" you cannot unbook the appointment \n 2-if you get 30 minutes late your appointment can be canceled");
+            e.stopPropagation();
+        });
+        h15.addEventListener('click', e => {
+            esch = 15;
+            horarioS=1;
+            alert("15:00 pm selected \n warnings:\n 1- after clicking \"Done\" you cannot unbook the appointment \n 2-if you get 30 minutes late your appointment can be canceled");
+            e.stopPropagation();
+        });
+        h16.addEventListener('click', e => {
+            esch = 16;
+            horarioS=1;
+            alert("15:30 pm selected \n warnings:\n 1- after clicking \"Done\" you cannot unbook the appointment \n 2-if you get 30 minutes late your appointment can be canceled");
+            e.stopPropagation();
+        });
+        h17.addEventListener('click', e => {
+            esch = 17;
+            horarioS=1;
+            alert("16:00 pm selected \n warnings:\n 1- after clicking \"Done\" you cannot unbook the appointment \n 2-if you get 30 minutes late your appointment can be canceled");
+            e.stopPropagation();
+        });
+        h18.addEventListener('click', e => {
+            esch = 18;
+            horarioS=1;
+            alert("16:30 pm selected \n warnings:\n 1- after clicking \"Done\" you cannot unbook the appointment \n 2-if you get 30 minutes late your appointment can be canceled");
+            e.stopPropagation();
+        });
+
+
+        
+
+        confirmarAgendamento.addEventListener('click', e => {
+            
+            document.getElementById('loading').innerHTML += '<div id="ftco-loader" class="show"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee" /><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#6b9fce" /></svg></div>';
+
+
+            var jaPego = null;
+
+                //////// COMEÇO ver se ninguem pegou o horario primeiro
+
+                var hora = null; //usado pra comparar a hora pega com a agendada
+                
+
+                var storageRef = storage.ref();
+                storageRef.child('booking/barber'+escb+'/' + escd+'/time'+esch).getDownloadURL().then(function(url) {
+                    var XMLHttp = new XMLHttpRequest();
+                    XMLHttp.onreadystatechange = function() {
+                        if (XMLHttp.readyState == 4 && XMLHttp.status == 200){
+                                agenda = XMLHttp.responseText; // pegou a agenda
+                            
+                            console.log(agenda);
+                            
+                            if (agenda != "" && agenda != null) {
+                                            document.getElementById('loading').innerHTML = '';
+                                alert("Sorry someone just booked this time, please chose another time if fits you.");
+                                
+                                document.getElementById("h"+esch).style.display = 'none';   
+                                    
+                                
+                                
+                            }
+                            else{
+                                continuarVerificacao();
+                            }
+                        }
+                    }
+                    XMLHttp.open("GET", url, true); // true for asynchronous 
+                    
+
+                    XMLHttp.send(null);
+                }).catch(function(error) {
+                                document.getElementById('loading').innerHTML = '';
+                        alert('please try again the system was rebooting');
+                    //tratar os erros aqui
+                });
+                
+
+                //fim de mostrar a agenda do dia selecionado
+
+        function continuarVerificacao()
+            {
+                
+                
+
+                if(ctrl== null){
+                                document.getElementById('loading').innerHTML = '';
+            alert('You didnt select a valid day');
+            }
+            
+            else if(horarioS== null){
+                            document.getElementById('loading').innerHTML = '';
+            alert('You didnt select a time');
+            }
+
+            else if(escd == null){
+                            document.getElementById('loading').innerHTML = '';
+                alert('Chose a valid day');
+            }
+
+            else if(escs == null){
+                            document.getElementById('loading').innerHTML = '';
+                alert('Chose a service');
+            }
+
+            
+
+            else if(jaPego == true){//verificar se alguem ja não pegou o horario
+                            document.getElementById('loading').innerHTML = '';
+
+                alert('Sorry, someone just booked this time before you, please chose another time if suits you');
+
+            }//fim impedir dois agendamentos na mesma hora
+
+
+
+            else if(agenda==""){//pegar o que já tem no arquivo e adicionar o horario selecionado
+                console.log("agendamento final")
+                var serviceText = document.getElementById('s'+escs).textContent;
+                var codR =(Math.floor((esch/2)+0.5)+7)+":"+Math.abs(((esch%2)-1)*30)+"||"+nomeU+"||"+serviceText;
+                console.log('dados: '+ nomeU+" "+ serviceText);
+
+                 var storageRef5 = firebase.storage().ref();
+                    storageRef5.child('booking/barber'+escb+'/'+ escd+'/time'+esch).putString(codR).then(function(snapshot) {
+                        if (snapshot.bytesTransferred / snapshot.totalBytes) //agora com o upload ja feito mandamos o link para a pessoa que tem o 
+                        {
+                            var days = ['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday']
+                            var times = ['8am','8:30am','9am','9:30am','10am','10:30am','11am','11:30am','12','12:30pm','13pm','13:30pm','14pm','14:30pm','15pm','15:30pm','16pm','16:30pm',]
+                            alert('Wait a few seconds while we confirm the booking for ' +days[escd-1] +' at ' +times[esch-1]);
+                            finalconfirm();
+                        }
+
+                    });
+
+            //fim pegar o que ja tem no arquivo e adicionar o horario selecionado
+            }
+            }//fim da func continua
+            mostrarAgenda();
+            e.stopPropagation();
+        });
+
+
+        function finalconfirm(){
+
+
+            setTimeout(function(){
+
+
+                  var storageRef = storage.ref();
+                storageRef.child('booking/barber'+escb+'/' + escd+'/time'+esch).getDownloadURL().then(function(url) {
+                    var XMLHttp = new XMLHttpRequest();
+                    XMLHttp.onreadystatechange = function() {
+                        if (XMLHttp.readyState == 4 && XMLHttp.status == 200){
+                                agenda = XMLHttp.responseText; // pegou a agenda
+                            
+                            var aux = agenda.split("||");
+                            if(aux[1] == undefined){
+                                            document.getElementById('loading').innerHTML = '';
+                                alert('Sorry the system is on weekely maintanance, usualy takes 9 seconds, please chose the day and time again.')
+
+                            }
+
+                            else{
+                                            document.getElementById('loading').innerHTML = '';
+                               alert('The person who booked at: '+aux[0]+' is named: \n'+aux[1]+'\n*If the name above is your name you have successfully booked, thank you.\n*If the name above is not your name this means someone booked this time exactly 1 second before you. This is very unlikely to happen but dont worry we care about these details. If this is not your name please chose another time if that suits you.');                                
+
+                            }
+                        }
+                    }
+                    XMLHttp.open("GET", url, true); // true for asynchronous 
+                    
+
+                    XMLHttp.send(null);
+                }).catch(function(error) {
+                    
+                        continuarVerificacao()
+                    //tratar os erros aqui
+                });
+
+        }, 3000);
+        }
+
+const controller = new AbortController();
+// signal to pass to fetch
+const signal = controller.signal;
+
+        function limparDias(){
+            controller.abort();
+            var i = null;
+            for(i = 1; i<19; i ++){
+            document.getElementById("h"+i).style.display = 'none';   
+            }
+        }
+    </script>
+
+</body>
+
+</html>

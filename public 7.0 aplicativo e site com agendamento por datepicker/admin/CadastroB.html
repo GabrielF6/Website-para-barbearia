@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet">
+
+
+  <link rel="stylesheet" href="../css/open-iconic-bootstrap.min.css">
+  <link rel="stylesheet" href="../css/animate.css">
+
+  <link rel="stylesheet" href="../css/owl.carousel.min.css">
+  <link rel="stylesheet" href="../css/owl.theme.default.min.css">
+  <link rel="stylesheet" href="../css/magnific-popup.css">
+
+  <link rel="stylesheet" href="../css/aos.css">
+
+  <link rel="stylesheet" href="../css/ionicons.min.css">
+
+  <link rel="stylesheet" href="../css/bootstrap-datepicker.css">
+  <link rel="stylesheet" href="../css/jquery.timepicker.css">
+
+
+  <link rel="stylesheet" href="../css/flaticon.css">
+  <link rel="stylesheet" href="../css/icomoon.css">
+  <link rel="stylesheet" href="../css/style.css">
+  <title>Cadastro</title>
+  <script src="https://www.gstatic.com/firebasejs/7.21.1/firebase.js"></script>
+
+</head>
+
+
+<body >
+  <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
+    <div class="container">
+      <a class="navbar-brand" href="index.html">Rustic Cut</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="oi oi-menu"></span> Menu
+      </button>
+
+      <div class="collapse navbar-collapse" id="ftco-nav">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item"><a href="../index.html" class="nav-link">Home</a></li>
+         <li class="nav-item"><a href="area_admin.html" class="nav-link">Admin area</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+
+  <section class="ftco-section contact-section" >
+    <section class="clean-block clean-form dark">
+      <div class="container" align="center" style="margin-top: 100px">
+        <div class="block-heading">
+         <h1 class="mb-5" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }" style="opacity: 0.792126; transform: translateZ(0px) translateY(-3.89764%);">Barber sign in</h1>
+       </div>
+       <form>
+         <div class="form-group"><input type="name" name="nome" placeholder="Name"  style="width:85%; text-align: center" id= "nome" required class="form-control input-lg" />
+         </div>
+         
+
+         <label for="imageUpload" style="width:150px; margin: 5% " class="btn btn-primary btn-block btn-outlined">Barber's picture</label>
+         <input type="file" id="imageUpload" accept="image/*" style="display: none">        
+
+         <div class="form-group"><button class="btn btn-primary btn-block" id="cadastrar" style="width:100px; margin: 5%" type="button">
+        Done</button></div>
+         
+         <label for="name" class="" id="achado" style="margin-left:10px;" ></label>
+       </form>
+     </div>
+     <label for="name" class="" id="loading" style="" ></label>
+   </section>
+
+ </section>
+
+ <script >
+                  // Inicializa firebase
+                  var config = {
+                    apiKey: "AIzaSyCjzgnkXen69TGkVWKQZmCELnR-eQHjRe0",
+                    authDomain: "rusticcutbarber.firebaseapp.com",
+                    databaseURL: "https://rusticcutbarber.firebaseio.com",
+                    projectId: "rusticcutbarber",
+                    storageBucket: "rusticcutbarber.appspot.com",
+                    messagingSenderId: "412308247289"
+                  };
+                  firebase.initializeApp(config);
+
+                  firebase.auth().onAuthStateChanged(function(user) {
+                    if (user) {
+                      console.log('ja logado');
+                    } else {
+                  //se nao tiver logado é direcionado para a pagina principal.
+                  document.location.href = '../index.html';
+                }
+              });
+
+                //instancia referencia para o serviço storage do firebase
+                var storage = firebase.storage();
+
+                //pegar valor de controle dos barbeiros
+                var numdef=null;
+                var quantidade=null;
+                var numB= null;
+
+                //pegar foto do barbeiro caso tenha
+                var arquivo = document.getElementById('imageUpload');
+                arquivo.addEventListener ('change',function(e){
+
+                  var file= e.target.files[0];
+                  arquivo = file;
+                  alert('barber picture is loaded');
+
+                });
+                                //fim pegar foto barbeiro
+
+                                var storageRef4 = storage.ref();
+                                storageRef4.child('barbers/info').getDownloadURL().then(function(url) {
+                                  var XMLHttp = new XMLHttpRequest();
+                                  XMLHttp.onreadystatechange = function() { 
+                                    if (XMLHttp.readyState == 4 && XMLHttp.status == 200)
+                                      numB = XMLHttp.responseText; // should have your text
+                                    console.log(numB);
+                                    if(numB!=null) {numdef=numB; quantidade=numB; quantidade++;}
+
+                                  }
+                         XMLHttp.open("GET", url, true); // true for asynchronous 
+
+                         XMLHttp.send(null);
+                       }).catch(function(error) {
+                         var storageRef4 = firebase.storage().ref();
+                         storageRef4.child('barbers/info').putString('0').then(function(snapshot) {
+                                              if(snapshot.bytesTransferred/snapshot.totalBytes) //agora com o upload ja feito mandamos o link para a pessoa que tem o 
+                                              {
+                                                numdef=0; quantidade=0; quantidade++;                                                
+                                              }
+
+                                            }); 
+                            //tratar os erros aqui
+                          });
+
+                //fim pegar valor de referencia dos barbeiros
+
+                //pega os valores dos campos para cadastro
+                
+                const txtnome = document.getElementById('nome');
+                  
+                
+                //desloga cado o usuario entre nesta pagina, serve para caso ele venha de uma pagina em que esteja logado e por segurança ele nao pode voltar mais apenas clicando no botao voltar do navegador
+                
+
+                  //função que trata o click no botao criar conta
+                  cadastrar.addEventListener ('click', e => {
+                    //pega os valores dos campos do cadastro
+                    document.getElementById('loading').innerHTML += '<div id="ftco-loader" class="show"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee" /><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#6b9fce" /></svg></div>';
+
+                    
+
+                    //condição de todos os campos obrigatórios terem sido preenchidos
+                    if(txtnome.value==""  ) {
+                      document.getElementById('loading').innerHTML = '';
+                      alert('write the barbers name');
+                      
+                    }
+                    else{//caso todos os campos estejam preenchidos
+                          //criar pasta do usuario no fire store
+
+                          
+                          var storageRef2 = firebase.storage().ref('barbers/picture'+numdef+'.jpg');
+                          var tarefa = storageRef2.put(arquivo); 
+
+                          tarefa.on('state_changed',
+
+                            function progresso(snapshot)
+                            {
+                                      
+                                      
+                                     
+
+
+
+                          },function(error){document.getElementById('loading').innerHTML = '';},
+                          function(){
+                             console.log('pronto');
+                                        var storageRef3 = firebase.storage().ref();
+                                        var message = txtnome.value;
+                                        storageRef3.child('barbers/barber'+numdef+'').putString(message).then(function(snapshot) {
+
+                                          if(snapshot.bytesTransferred/snapshot.totalBytes) //agora com o upload ja feito mandamos o link para a pessoa que tem o cpf
+                                          {
+                                            document.getElementById('loading').innerHTML = '';
+
+                                            console.log('link enviado para a pessoa');
+                                            alert('Barber registered');
+
+                                            var storageRef4 = firebase.storage().ref();
+                                            storageRef4.child('barbers/info').putString(quantidade.toString()).then(function(snapshot) {
+
+                                                if(snapshot.bytesTransferred/snapshot.totalBytes) //agora com o upload ja feito mandamos o link para a pessoa que tem o cpf
+                                                {
+                                                  chave="1";
+
+                                                  window.location.href = "area_admin.html"  ;
+                                                }
+
+
+                                              });  
+
+
+                                            
+                                          }
+
+                                        });  
+                          }
+                          );
+
+
+
+                    }//fim else os campos estao todos preenchidos
+
+                    e.stopPropagation();
+                  });
+
+
+
+</script>
+
+
+
+
+
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.10.0/baguetteBox.min.js"></script>
+<script src="../js/jquery.min.js"></script>
+<script src="../js/jquery-migrate-3.0.1.min.js"></script>
+<script src="../js/popper.min.js"></script>
+<script src="../js/bootstrap.min.js"></script>
+<script src="../js/jquery.easing.1.3.js"></script>
+<script src="../js/jquery.waypoints.min.js"></script>
+<script src="../js/jquery.stellar.min.js"></script>
+<script src="../js/owl.carousel.min.js"></script>
+<script src="../js/jquery.magnific-popup.min.js"></script>
+<script src="../js/aos.js"></script>
+<script src="../js/jquery.animateNumber.min.js"></script>
+<script src="../js/bootstrap-datepicker.js"></script>
+<script src="../js/jquery.timepicker.min.js"></script>
+<script src="../js/scrollax.min.js"></script>
+
+
+<script src="../js/main.js"></script>
+
+</body>
+
+</html>

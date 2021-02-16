@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet">
+
+    <link rel="stylesheet" href="../css/open-iconic-bootstrap.min.css">
+    <link rel="stylesheet" href="../css/animate.css">
+
+    <link rel="stylesheet" href="../css/owl.carousel.min.css">
+    <link rel="stylesheet" href="../css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="../css/magnific-popup.css">
+
+    <link rel="stylesheet" href="../css/aos.css">
+
+    <link rel="stylesheet" href="../css/ionicons.min.css">
+
+    <link rel="stylesheet" href="../css/bootstrap-datepicker.css">
+    <link rel="stylesheet" href="../css/jquery.timepicker.css">
+
+    <link rel="stylesheet" href="../css/flaticon.css">
+    <link rel="stylesheet" href="../css/icomoon.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <title>Admin area</title>
+    <script src="https://www.gstatic.com/firebasejs/5.4.2/firebase.js"></script>
+    <script type="text/javascript">
+        // Inicializa firebase
+        var config = {
+            apiKey: "AIzaSyCjzgnkXen69TGkVWKQZmCELnR-eQHjRe0",
+            authDomain: "rusticcutbarber.firebaseapp.com",
+            databaseURL: "https://rusticcutbarber.firebaseio.com",
+            projectId: "rusticcutbarber",
+            storageBucket: "rusticcutbarber.appspot.com",
+            messagingSenderId: "412308247289"
+        };
+        firebase.initializeApp(config);
+
+        var storage = firebase.storage();
+
+        firebase.auth().onAuthStateChanged(function(user) {
+            if (user) {
+                console.log('ja logado');
+            } else {
+                //se nao tiver logado é direcionado para a pagina principal.
+                document.location.href = '../index.html';
+            }
+        });
+
+        //PEGA QUANTOS BARBEIROS TEM
+
+        var numdef = null;
+
+        var numB = null;
+        var storageRef = storage.ref();
+        storageRef.child('barbers/info').getDownloadURL().then(function(url) {
+            var XMLHttp = new XMLHttpRequest();
+            XMLHttp.onreadystatechange = function() {
+                if (XMLHttp.readyState == 4 && XMLHttp.status == 200)
+                    numB = XMLHttp.responseText; // should have your text
+                console.log(numB);
+                if (numB != null) {
+                    numdef = numB;
+
+                    //puxa as fotos e nomes dos barbeiros
+                    //////ADICIONAR Fotos e nomes                ********************************
+
+                    var i = 0;
+                    var x = 1;
+                    pegab();
+
+                    function pegab() {
+                        if (i == numB) return 0;
+                        var ctl = 1;
+                        console.log(i);
+                        var nome = null;
+                        var storage = firebase.storage();
+                        var storageRef = storage.ref();
+                        storageRef.child('barbers/barber' + i).getDownloadURL().then(function(url) {
+                            var XMLHttp = new XMLHttpRequest();
+                            XMLHttp.onreadystatechange = function() {
+                                if (XMLHttp.readyState == 4 && XMLHttp.status == 200)
+                                    nome = XMLHttp.responseText; // should have your text
+                                console.log(nome)
+                                var storageRef2 = storage.ref();
+                                storageRef2.child('barbers/picture' + i + '.jpg').getDownloadURL().then(function(url) {
+                                    // `url` is the download URL for 'images/stars.jpg'
+
+                                    // This can be downloaded directly:
+                                    var xhr = new XMLHttpRequest();
+                                    xhr.responseType = 'blob';
+                                    xhr.onload = function(event) {
+                                        var blob = xhr.response;
+                                    };
+                                    xhr.open('GET', url);
+                                    xhr.send();
+                                    if (nome != null && url != null) {
+                                        if (ctl == 1) {
+                                            i++;
+                                            ctl = -1;
+                                            document.getElementById('barbeiros').innerHTML += '<div class="col-lg-3 d-flex mb-sm-4 ftco-animate fadeInUp ftco-animated"><div class="staff"><div class="img mb-4" style="background-image: url(' + url + ');"></div><div class="info text-center"><h3><a href="teacher-single.html">' + nome + '</a></h3><span class="position">Hair specialist</span><div class="text';
+
+                                            pegab();
+
+                                        }
+
+                                    }
+
+                                }).catch(function(error) {
+                                    // Handle any errors
+                                });
+                            }
+                            XMLHttp.open("GET", url, true); // true for asynchronous 
+
+                            XMLHttp.send(null);
+                        }).catch(function(error) {
+                            //tratar os erros aqui
+                        });
+
+                    }
+
+                    //////FIM ADICIONAR STAKEHOLDERS                  ************************************
+
+                }
+
+            }
+            XMLHttp.open("GET", url, true); // true for asynchronous 
+
+            XMLHttp.send(null);
+        }).catch(function(error) {
+            //tratar os erros aqui
+        });
+        //FIM PEGA QUANTOAS BARBEIROS TEM
+    </script>
+
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
+        <div class="container">
+            <a class="navbar-brand" style="font-size: 30px" href="index.html">Rustic Cut: Admin area</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="oi oi-menu"></span> Menu
+            </button>
+
+            <div class="collapse navbar-collapse" id="ftco-nav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item"><a style="font-size: 16px;" href="../index.html" class="nav-link">Home</a></li>
+                    <li class="nav-item"><a style="font-size: 16px;" href="AdminAgd.html" class="nav-link">Booked Appointments</a></li>
+                    <li class="nav-item"><a style="font-size: 16px;" href="AdminGallery.html" class="nav-link">Gallery</a></li>
+                    <li class="nav-item"><a style="font-size: 16px;" href="CadastroB.html" class="nav-link">Register a new barber</a></li>
+                    <li class="nav-item"><a style="font-size: 16px;" href="CadastroServices.html" class="nav-link">Register services and prices</a></li>
+                    
+                    <button class="btn btn-primary px-4 py-3" id="lo" type="button">Exit<i class="icon-logout icon"></i></button>
+                    <script>
+                        //logout
+                        lo.addEventListener('click', e => {
+                            firebase.auth().signOut();
+                            window.location.href = "../index.html";
+
+                        });
+                    </script>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <section class="ftco-section" style="margin: 10%">
+        <div class="container">
+            <div class="row justify-content-center mb-5 pb-3">
+                <div class="col-md-7 heading-section ftco-animate text-center">
+                    <h2 class="mb-4">Barbers</h2>
+                    <p class="flip"><span class="deg1"></span><span class="deg2"></span><span class="deg3"></span></p>
+
+                </div>
+            </div>
+            <div class="row" id="barbeiros">
+                
+               
+              
+               
+            </div>
+        </div>
+    </section>
+
+    
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.10.0/baguetteBox.min.js"></script>
+
+    <script src="../js/jquery.min.js"></script>
+    <script src="../js/jquery-migrate-3.0.1.min.js"></script>
+    <script src="../js/popper.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+    <script src="../js/jquery.easing.1.3.js"></script>
+    <script src="../js/jquery.waypoints.min.js"></script>
+    <script src="../js/jquery.stellar.min.js"></script>
+    <script src="../js/owl.carousel.min.js"></script>
+    <script src="../js/jquery.magnific-popup.min.js"></script>
+    <script src="../js/aos.js"></script>
+    <script src="../js/jquery.animateNumber.min.js"></script>
+    <script src="../js/bootstrap-datepicker.js"></script>
+    <script src="../js/jquery.timepicker.min.js"></script>
+    <script src="../js/scrollax.min.js"></script>
+
+    <script src="../js/main.js"></script>
+
+</body>
+
+</html>

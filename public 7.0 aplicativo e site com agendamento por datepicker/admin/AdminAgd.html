@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet">
+
+    <link rel="stylesheet" href="../css/open-iconic-bootstrap.min.css">
+    <link rel="stylesheet" href="../css/animate.css">
+
+    <link rel="stylesheet" href="../css/owl.carousel.min.css">
+    <link rel="stylesheet" href="../css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="../css/magnific-popup.css">
+
+    <link rel="stylesheet" href="../css/aos.css">
+
+    <link rel="stylesheet" href="../css/ionicons.min.css">
+
+    <link rel="stylesheet" href="../css/bootstrap-datepicker.css">
+    <link rel="stylesheet" href="../css/jquery.timepicker.css">
+
+    <link rel="stylesheet" href="../css/flaticon.css">
+    <link rel="stylesheet" href="../css/icomoon.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <title>Marcar Corte</title>
+    <script src="https://www.gstatic.com/firebasejs/7.21.1/firebase.js"></script>
+   
+
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light"  id="ftco-navbar">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">Rustic Cut: Booked appointments</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="oi oi-menu"></span> Menu
+            </button>
+
+            <div class="collapse navbar-collapse" id="ftco-nav" style="margin-left: 10%">
+                <ul class="navbar-nav ml-auto" >
+                    <li class="nav-item" style="padding-right: 10%" ><a style="font-size: 20px;" href="../index.html" class="nav-link">Home</a></li>
+                    <li class="nav-item" style="padding-right: 10%"><a  style="font-size: 20px;" href="area_admin.html" class="nav-link">Admin area</a></li>
+
+                    
+                    <button class="btn btn-primary px-4 py-3" id="lo" type="button">Exit<i class="icon-logout icon"></i></button>
+                    <script>
+                        //logout
+                        lo.addEventListener('click', e => {
+                            firebase.auth().signOut();
+                            window.location.href = "../index.html";
+
+                        });
+                        // Mostrar
+                    </script>
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="hero-wrap js-fullheight" class="inline" align="center" style="margin-top: 200px; margin-bottom: 50px; " data-stellar-background-ratio="0.5">
+
+        
+
+        <table style="width:90%"  class="mb-5" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">
+            <tr align="center">
+
+                <th >
+
+                    <div class="col-md-7 heading-section ftco-animate text-center" align="center">
+                    <h2 class="mb-4">Chose a day</h2>
+                    <p class="flip"><span class="deg1"></span><span class="deg2"></span><span class="deg3"></span></p>
+
+                </div>
+
+
+            </tr >
+            <tr >
+
+                <td align="center" >
+                    
+                    <div class="input-group date" data-provide="datepicker">
+                        <input type="text" class="form-control" style="text-align: center;" id="datepicking" placeholder="click here to chose a date" readonly="readonly">
+                        <div class="input-group-addon">
+                            <span class="glyphicon glyphicon-th"></span>
+                        </div>
+                    </div>
+                </td>
+
+            </tr>
+            
+            
+        </table align="center">
+
+
+        <style type="text/css">
+        #b1, #b2, #b3, #b4, #b5, #b6, #b7, #b8, #b9, #b10 {
+        display: none;
+        }
+        </style>
+
+        <label for="name" class="" id="loading" style="" ></label>
+
+
+         <div class="col-md-7 heading-section ftco-animate text-center" align="center">
+                    <h2 class="mb-4">Chose a Barber</h2>
+                    <p class="flip"><span class="deg1"></span><span class="deg2"></span><span class="deg3"></span></p>
+
+                </div>
+
+
+        <table  align="center"  class="mb-5" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">
+
+            <tr>
+                <td>
+                    <button id="b1" onclick="escbarb(1)" class="btn btn-primary btn-block" style= "margin: 4%; margin-top: 30px" align="center"></button>
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    <button id="b2"  onclick="escbarb(2)"class="btn btn-primary btn-block" style= "margin: 4%" align="center"></button>
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    <button id="b3"  onclick="escbarb(3)"class="btn btn-primary btn-block" style= "margin: 4%" align="center"></button>
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    <button id="b4"  onclick="escbarb(4)"class="btn btn-primary btn-block" style= "margin: 4%" align="center"></button>
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    <button id="b5"  onclick="escbarb(5)"class="btn btn-primary btn-block" style= "margin: 4%" align="center"></button>
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    <button id="b6"  onclick="escbarb(6)"class="btn btn-primary btn-block" style= "margin: 4%" align="center"></button>
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    <button id="b7"  onclick="escbarb(7)"class="btn btn-primary btn-block" style= "margin: 4%" align="center"></button>
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    <button id="b8"  onclick="escbarb(8)"class="btn btn-primary btn-block" style= "margin: 4%" align="center"></button>
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    <button id="b9"  onclick="escbarb(9)"class="btn btn-primary btn-block" style= "margin: 4%" align="center"></button>
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    <button id="b10" onclick="escbarb(10)" class="btn btn-primary btn-block" style= "margin: 4%" align="center"></button>
+                </td>
+            </tr>
+
+        </table>
+
+         <div class="col-md-7 heading-section ftco-animate text-center" align="center">
+                    <h2 class="mb-4">Booked times below</h2>
+                    <p class="flip"><span class="deg1"></span><span class="deg2"></span><span class="deg3"></span></p>
+
+                </div>
+
+        <div id="Horarios" style="margin-top: 50px">
+            
+
+        </div>
+
+
+            
+        </div>
+
+    </div>
+
+    </div>
+
+   
+
+    
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.10.0/baguetteBox.min.js"></script>
+    <script src="../js/jquery.min.js"></script>
+    <script src="../js/jquery.min.js"></script>
+    <script src="../js/jquery-migrate-3.0.1.min.js"></script>
+    <script src="../js/popper.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+    <script src="../js/jquery.easing.1.3.js"></script>
+    <script src="../js/jquery.waypoints.min.js"></script>
+    <script src="../js/jquery.stellar.min.js"></script>
+    <script src="../js/owl.carousel.min.js"></script>
+    <script src="../js/jquery.magnific-popup.min.js"></script>
+    <script src="../js/aos.js"></script>
+    <script src="../js/jquery.animateNumber.min.js"></script>
+    <script src="../js/bootstrap-datepicker.js"></script>
+    <script src="../js/jquery.timepicker.min.js"></script>
+    <script src="../js/scrollax.min.js"></script>
+
+    <script src="../js/main.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('#appt').timepicker({
+
+                timeFormat: 'h:mm p',
+                interval: 30
+            });
+
+        });
+
+        var config = {
+            apiKey: "AIzaSyCjzgnkXen69TGkVWKQZmCELnR-eQHjRe0",
+            authDomain: "rusticcutbarber.firebaseapp.com",
+            databaseURL: "https://rusticcutbarber.firebaseio.com",
+            projectId: "rusticcutbarber",
+            storageBucket: "rusticcutbarber.appspot.com",
+            messagingSenderId: "412308247289"
+        };
+        firebase.initializeApp(config);
+        var storage = firebase.storage();
+
+        var nomeU=null;
+
+        firebase.auth().onAuthStateChanged(function(user) {
+            if (user) {
+                console.log('ja logado');
+                console.log(user.displayName);
+                nomeU = user.displayName;
+            } else {
+                //se nao tiver logado é direcionado para a pagina principal.
+                document.location.href = '../index.html';
+            }
+        });
+
+        var escd = null; //usada para escolha do dia
+        var esch = null; //usada para a escolha do horario.
+        var ctrl = null; //usada para saber o que fazer quando clicar no botao confirma
+        var horarioS =null;//usado para saber se algum dia foi selecionado
+        var data = new Date(); //pega a data
+        var dia = data.getDay(); //pega o dia da semana
+        var agenda = null; //guarda toda a agenda do dia
+
+
+
+
+        var today = new Date();
+        var dd = String(today.getDate()).padStart(2, '0');
+        var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+        var yyyy = today.getFullYear();
+
+        today = mm + '/' + dd + '/' + yyyy;
+
+
+
+
+
+
+
+
+       var numdef2 = null;
+
+        var numB2 = null;
+        var storageRef = storage.ref();
+        storageRef.child('barbers/info').getDownloadURL().then(function(url) {
+            var XMLHttp = new XMLHttpRequest();
+            XMLHttp.onreadystatechange = function() {
+                if (XMLHttp.readyState == 4 && XMLHttp.status == 200)
+                    numB2 = XMLHttp.responseText; // should have your text
+                console.log(numB2);
+                if (numB2 != null) {
+                    numdef2 = numB2;
+
+                    //puxa as fotos e nomes dos barbeiros
+                    //////ADICIONAR Fotos e nomes                ********************************
+
+                    var i = 0;
+                    var x = 1;
+                    pegab();
+
+                    function pegab() {
+                        if (i == numB2) return 0;
+                        var ctl = 1;
+                        console.log(i);
+                        var nome = null;
+                        var storage = firebase.storage();
+                        var storageRef = storage.ref();
+                        storageRef.child('barbers/barber' + i).getDownloadURL().then(function(url) {
+                            var XMLHttp = new XMLHttpRequest();
+                            XMLHttp.onreadystatechange = function() {
+                                if (XMLHttp.readyState == 4 && XMLHttp.status == 200){
+                                    nome = XMLHttp.responseText; // should have your text
+                                
+                                console.log(nome)
+                                
+                                        if (ctl == 1) {
+                                            
+                                            ctl = -1;
+                                            document.getElementById('b'+(i+1)).innerHTML = nome;
+                                            
+
+
+                                            
+
+                                            i++;
+                                            pegab();
+
+                                        }
+                                    }
+
+                            }
+                            XMLHttp.open("GET", url, true); // true for asynchronous 
+
+                            XMLHttp.send(null);
+                        }).catch(function(error) {
+                            //tratar os erros aqui
+                        });
+
+                    }
+
+                    //////FIM ADICIONAR STAKEHOLDERS                  ************************************
+
+                }
+
+            }
+            XMLHttp.open("GET", url, true); // true for asynchronous 
+
+            XMLHttp.send(null);
+        }).catch(function(error) {
+            //tratar os erros aqui
+        });
+
+
+
+
+
+
+
+
+
+
+
+        function mostrarAgenda() {
+
+            escd = escd.toString().split("/").join("_");
+
+            document.getElementById('loading').innerHTML += '<div id="ftco-loader" class="show"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee" /><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#6b9fce" /></svg></div>';
+
+
+                var diaesc = escd;
+                document.getElementById('Horarios').innerHTML = ""
+         
+
+                var hora = 1 ; //usado para pegar todos os arquivos de horario 18 horarios
+
+                alert('loading booked appointments for this barber in this day, the booked appointments will be shown below');
+
+                
+                loop();
+                function loop() {
+                    console.log('hora: '+ hora);
+                if(hora == 19) {
+                    document.getElementById('loading').innerHTML = '';
+                    var aux =  document.getElementById('Horarios').innerHTML;
+                    console.log("aux:" + aux);
+                    if(aux == "") alert('there is no booked appointments for this day to this barber');
+                    return 0;}
+
+                
+                var storageRef = storage.ref('booking/barber'+escb+'/' + escd+'/time'+hora).getDownloadURL().then(function(url) {
+                    var XMLHttp = new XMLHttpRequest();
+                    XMLHttp.onreadystatechange = function() {
+                        
+                        if (XMLHttp.readyState == 4 && XMLHttp.status == 200){
+                            agenda = XMLHttp.responseText; // pegou a agenda
+                        
+                        console.log("hora: "+ hora);
+
+                        if(diaesc != escd) return 0;
+
+                        if (agenda != "") {
+                                console.log('dados:'+agenda);
+                                var aux = agenda.split("||");
+                                
+                                document.getElementById('Horarios').innerHTML += '<div style="display:inline-block; margin: 1%"><button   class="btn btn-primary btn-block" style="width: 90px; " align="center" style="display:inline-block;">'+aux[0]+'</button></div><div style="display:inline-block; margin: 1%"><button   class="btn btn-primary btn-block" style="width: 300px; " align="center" style="display:inline-block;">'+aux[1]+'</button></div><div style="display:inline-block; margin: 1%"><button   class="btn btn-primary btn-block" style="width: 200px; " align="center" style="display:inline-block;">'+aux[2]+'</button></div><div style="display:inline-block; margin: 1%"><button   class="btn btn-primary btn-block" style="width: 300px; " align="center" style="display:inline-block;">'+aux[3]+'</button></div><div style= "margin-top: 3%"></div>';
+                                
+
+                            }
+                            
+                                
+                            }
+                        }
+
+                    
+                    XMLHttp.open("GET", url, false); // true for asynchronous 
+
+                    XMLHttp.send(null);
+
+                    if (XMLHttp.status == 404){
+                            loop();
+                        }
+
+                    if(url != null){
+                        console.log('carregado');
+                        hora++;
+                        loop();
+                    }
+                }).catch(function(error) {
+                    document.getElementById('loading').innerHTML = '';
+                    
+                    alert('No one booked for this day yet.');
+
+                    //tratar os erros aqui
+                });
+
+               } // fim do loop para pegar todos os horarios
+
+                //fim de mostrar a agenda do dia selecionado
+            }
+
+        
+
+        //função que trata o click no botao escolher o dia
+        datepicking.addEventListener('click',e => {
+            
+            
+        
+            
+            mostrarB();
+            
+            //escd = 2;
+            
+            
+            e.stopPropagation();
+
+        });
+
+          function escbarb(valor){
+
+            escd = $('#datepicking').val(); // pega o dia escolhido
+            console.log('escd: '+ escd);
+            if(escd === undefined){
+                alert("chose a day so the system can show the booked times");
+            }
+            else{
+                escb = valor; //seta o valor do barbeiro
+                
+                mostrarAgenda();
+            }
+        }
+
+        function mostrarB(){
+
+            setTimeout(function(){alert('wait briefly while the barbers are loaded')},20);
+
+
+            setTimeout(function(){
+            console.log('numdef2:'+numdef2);
+            for(var i = 0; i<numdef2; i++){
+                document.getElementById('b'+(i+1)).style.display= 'initial';
+            }
+        },3000);
+        }
+        
+       
+    </script>
+
+</body>
+
+</html>
